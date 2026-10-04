@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Otávio Oliveira | Estudante de Sistemas de Informação</title>
+  <meta name="description" content="Landing page de Otávio de Campos Fermino Oliveira, estudante de Sistemas de Informação no IFSULDEMINAS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="progresso" aria-hidden="true"></div>
+
+  <header class="topo">
+    <a class="marca" href="#inicio" aria-label="OCFO, ir para o início">OCFO</a>
+    <button id="menu-botao" class="menu-botao" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav id="menu" class="menu" aria-label="Principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#competencias">Competências</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button id="botao-tema" class="botao-tema" type="button" aria-label="Alternar tema claro e escuro">Tema</button>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <header class="hero__texto">
+        <h1>Otávio de Campos Fermino Oliveira</h1>
+        <p class="hero__papel">Foco em <strong id="papel">Programação</strong></p>
+        <p>Estudo Sistemas de Informação no IFSULDEMINAS, Campus Machado, e aprendo construindo: do código aos projetos de IA.</p>
+        <nav class="acoes" aria-label="Atalhos">
+          <a class="btn" href="#projetos">Ver projetos</a>
+          <a class="btn btn--vazado" href="#contato">Entrar em contato</a>
+        </nav>
+      </header>
+      <figure class="hero__foto">
+        <img src="foto.jpg" alt="Retrato de Otávio, sorrindo, de blazer azul-marinho" width="640" height="964">
+      </figure>
+    </section>
+
+    <section id="sobre" class="secao">
+      <h2>Sobre</h2>
+      <div class="sobre">
+        <p class="sobre__texto">Sou estudante de Sistemas de Informação e participo, como voluntário, do GAPE-IA, o grupo de pesquisa e extensão em inteligência artificial do IFSULDEMINAS. Estou construindo minha base em programação, banco de dados e controle de versão com Git.</p>
+        <aside class="sobre__curso">
+          <h3>Formação</h3>
+          <p>Sistemas de Informação, IFSULDEMINAS, Campus Machado. Conclusão prevista em fevereiro de 2030.</p>
+        </aside>
+        <aside class="sobre__idioma">
+          <h3>Idiomas</h3>
+          <p>Português e inglês básico (A2).</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="competencias" class="secao">
+      <h2>Competências</h2>
+      <div class="competencias">
+        <section>
+          <h3>Linguagens</h3>
+          <ul><li>C (intermediário)</li><li>Python (intermediário)</li><li>C# (básico)</li><li>HTML, CSS e JavaScript (em estudo)</li></ul>
+        </section>
+        <section>
+          <h3>Dados e versionamento</h3>
+          <ul><li>Git e GitHub (intermediário)</li><li>MySQL Workbench (básico)</li></ul>
+        </section>
+        <section>
+          <h3>Ferramentas de escritório</h3>
+          <ul><li>Word, PowerPoint e Excel (intermediário)</li></ul>
+        </section>
+      </div>
+    </section>
+
+    <section id="projetos" class="secao">
+      <h2>Projetos</h2>
+      <search class="controles">
+        <label for="busca">Buscar projeto</label>
+        <input id="busca" type="search" placeholder="Ex.: IA, C#">
+        <div class="filtros" role="group" aria-label="Filtrar por categoria">
+          <button type="button" class="filtro" data-filtro="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="filtro" data-filtro="ia" aria-pressed="false">IA</button>
+          <button type="button" class="filtro" data-filtro="codigo" aria-pressed="false">Código</button>
+        </div>
+        <p id="contagem" aria-live="polite"></p>
+      </search>
+
+      <div class="projetos">
+        <article class="projeto" data-categoria="ia" data-titulo="GAPE-IA" data-descricao="O GAPE-IA (Grupo de Pesquisa e Extensão em Inteligência Artificial) é um grupo do IFSULDEMINAS que une pesquisa e extensão para estudar a IA e levá-la à prática. Participo como voluntário, acompanhando as atividades do grupo, estudando os conceitos da área e colaborando nos projetos em desenvolvimento: a detecção de carros e a detecção de pombos, que usam modelos de IA para identificar esses objetos em imagens (visão computacional). É a minha porta de entrada para a pesquisa e para a aplicação de IA em problemas reais.">
+          <h3>GAPE-IA</h3>
+          <p>Grupo de pesquisa e extensão em inteligência artificial do IFSULDEMINAS, onde atuo como voluntário em projetos de detecção de objetos com modelos de IA.</p>
+          <footer class="acoes"><button type="button" class="btn btn--vazado btn-detalhes">Ver detalhes</button></footer>
+        </article>
+        <article class="projeto" data-categoria="codigo" data-titulo="Repositório de C#" data-descricao="Repositório com as atividades da disciplina de Linguagem e Técnicas de Programação, na qual aprendo C# partindo dos fundamentos da linguagem até a organização de programas maiores. Já trabalhamos com matrizes (criação, preenchimento e percorrimento com laços), reaproveitamento de código por meio de uma biblioteca própria de métodos e leitura de dados de arquivos CSV, aplicados em atividades como uma matriz de ocorrências de incêndio florestal. Tudo é versionado com Git e GitHub.">
+          <h3>Repositório de C#</h3>
+          <p>Atividades e exercícios em C# feitos durante o curso, versionados no GitHub.</p>
+          <footer class="acoes">
+            <button type="button" class="btn btn--vazado btn-detalhes">Ver detalhes</button>
+            <a class="btn" href="https://github.com/oliveiraotaviodecamposfermino-sketch/ltp-csharp" target="_blank" rel="noopener">Abrir no GitHub</a>
+          </footer>
+        </article>
+      </div>
+      <p id="sem-resultado" hidden>Nenhum projeto encontrado. Tente outra palavra.</p>
+    </section>
+
+    <section id="contato" class="secao">
+      <h2>Contato</h2>
+      <div class="contato">
+        <address class="canais">
+          <p>Quer conversar sobre estágio, projetos ou uma oportunidade? Me chame por um dos canais abaixo ou envie uma mensagem pelo formulário.</p>
+          <ul>
+            <li><a id="email-link" href="mailto:oliveiraotaviodecamposfermino@gmail.com">oliveiraotaviodecamposfermino@gmail.com</a></li>
+            <li><a href="https://wa.me/5519997552720" target="_blank" rel="noopener">WhatsApp: (19) 99755-2720</a></li>
+            <li><a href="https://www.linkedin.com/in/ot%C3%A1vio-oliveira-66691b430/" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+          <button type="button" id="copiar-email" class="btn btn--vazado">Copiar e-mail</button>
+          <p id="copiar-retorno" role="status"></p>
+        </address>
+
+        <form id="formulario" novalidate>
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" required>
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" maxlength="2000" required></textarea>
+          <p id="contador">0 / 2000 caracteres</p>
+          <p id="erro-form" role="alert"></p>
+          <button class="btn" type="submit">Preparar e-mail</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>© <span data-ano>2026</span> Otávio de Campos Fermino Oliveira</p>
+  </footer>
+
+  <a id="voltar-topo" class="voltar-topo" href="#inicio" aria-label="Voltar ao topo" hidden>Topo</a>
+
+  <dialog id="modal" aria-labelledby="modal-titulo">
+    <h3 id="modal-titulo"></h3>
+    <p id="modal-descricao"></p>
+    <button type="button" id="modal-fechar" class="btn">Fechar</button>
+  </dialog>
+</body>
+</html>
