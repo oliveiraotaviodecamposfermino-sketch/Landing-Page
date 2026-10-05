@@ -125,22 +125,50 @@ function inicializarModal() {
   modal.addEventListener('close', () => origem && origem.focus());
 }
 
-// 10. Formulário: valida e abre o e-mail já preenchido (não envia nada para servidor)
+// 10. Formulário: valida os campos e envia a mensagem pelo Web3Forms, que repassa para o meu e-mail
 function inicializarFormulario() {
   const form = $('#formulario');
-  const erro = $('#erro-form');
-  form.addEventListener('submit', (e) => {
+  const retorno = $('#erro-form');
+  const botao = form.querySelector('button[type="submit"]');
+  const mostrar = (texto, ok = false) => {
+    retorno.textContent = texto;
+    retorno.classList.toggle('ok', ok);
+  };
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const nome = form.nome.value.trim();
     const email = form.email.value.trim();
     const mensagem = form.mensagem.value.trim();
-    if (nome.length < 2) { erro.textContent = 'Informe seu nome.'; return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { erro.textContent = 'Informe um e-mail válido.'; return; }
-    if (mensagem.length < 10) { erro.textContent = 'A mensagem precisa ter pelo menos 10 caracteres.'; return; }
-    erro.textContent = '';
-    const assunto = encodeURIComponent(`Contato pela landing page: ${nome}`);
-    const corpo = encodeURIComponent(`${mensagem}\n\nResponder para: ${email}`);
-    location.href = `mailto:oliveiraotaviodecamposfermino@gmail.com?subject=${assunto}&body=${corpo}`;
+    if (nome.length < 2) return mostrar('Informe seu nome.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return mostrar('Informe um e-mail válido.');
+    if (mensagem.length < 10) return mostrar('A mensagem precisa ter pelo menos 10 caracteres.');
+    botao.disabled = true;
+    mostrar('Enviando...', true);
+    try {
+      const resposta = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: form.access_key.value,
+          subject: `Contato pela landing page: ${nome}`,
+          name: nome,
+          email,
+          message: mensagem,
+        }),
+      });
+      const dados = await resposta.json();
+      if (dados.success) {
+        form.reset();
+        $('#mensagem').dispatchEvent(new Event('input')); // zera o contador
+        mostrar('Mensagem enviada! Obrigado pelo contato.', true);
+      } else {
+        mostrar('Não foi possível enviar agora. Tente de novo ou use o e-mail ao lado.');
+      }
+    } catch {
+      mostrar('Erro no envio. Verifique a conexão e tente de novo.');
+    } finally {
+      botao.disabled = false;
+    }
   });
 }
 

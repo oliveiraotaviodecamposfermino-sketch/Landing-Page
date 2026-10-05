@@ -169,6 +169,7 @@ input, textarea {
 #contato input, #contato textarea { color: inherit; background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .3); }
 #contador { font-size: .9rem; opacity: .8; }
 #erro-form { color: #FFB4A3; font-weight: 600; }
+#erro-form.ok { color: #9BF0C8; }
 
 /* Rodapé, voltar ao topo, modal */
 .rodape { padding: 2rem 1.25rem; text-align: center; color: var(--suave); }
